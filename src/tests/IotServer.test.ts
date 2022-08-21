@@ -67,7 +67,7 @@ describe( "IotServer tests", () => {
 	test( "Should get some events", async () => {
 		const waterLeakDetectionData = new WaterLeakDetectionData( {
 			temperature: 57.8,
-			waterLevel: 1,
+			waterLevel: 10,
 			humidity: 99.8,
 			heatIndex: 54.3
 		} );

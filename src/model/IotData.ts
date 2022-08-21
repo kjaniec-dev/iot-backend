@@ -9,7 +9,7 @@ export abstract class IotData {
 	public readonly eventTypes: EventType[];
 
 	constructor( json: any ) {
-		this.ts = json.ts || Date.now();
+		this.ts = json.ts ? json.ts * 1000 : Date.now();
 		this.deserialize( json );
 		this.eventTypes = this.resolveEventTypes();
 	}

@@ -28,10 +28,10 @@ afterAll(  async () => {
 describe( "IotDataService - the most important logic", () => {
 	test( "Should emit value and save it", async () => {
 		const now = Date.now();
-		const temperature = 31.1;
-		const humidity = 42.8;
+		const temperature = 31;
+		const humidity = 42;
 		const waterLevel = 0;
-		const heatIndex = 29.89;
+		const heatIndex = 29;
 
 		let iotData: IotData;
 		const listener = ( data: IotData ) => {
@@ -40,7 +40,7 @@ describe( "IotDataService - the most important logic", () => {
 
 		iotDataService.registerListener( listener );
 
-		const waterLeakDetection = new WaterLeakDetectionData( {ts: now, temperature, waterLevel, humidity, heatIndex} )
+		const waterLeakDetection = new WaterLeakDetectionData( {ts: now / 1000, temperature, waterLevel, humidity, heatIndex} )
 		await iotDataService.onReceive( waterLeakDetection );
 
 		waitForSuccess(  () => {
@@ -70,13 +70,13 @@ describe( "IotDataService - the most important logic", () => {
 	} );
 
 	test( "Should not emit value if timestamp is from past", async () => {
-		const now = Date.now() - 60 * 1000;
-		const temperature = 31.1;
-		const humidity = 42.8;
+		const now = Date.now() - 60000;
+		const temperature = 31;
+		const humidity = 42;
 		const waterLevel = 0;
-		const heatIndex = 29.89;
+		const heatIndex = 29;
 
-		const waterLeakDetection = new WaterLeakDetectionData( {ts: now, temperature, waterLevel, humidity, heatIndex} )
+		const waterLeakDetection = new WaterLeakDetectionData( {ts: now / 1000, temperature, waterLevel, humidity, heatIndex} )
 		await iotDataService.onReceive( waterLeakDetection );
 
 		const items = iotDataService.getIotDataItems();

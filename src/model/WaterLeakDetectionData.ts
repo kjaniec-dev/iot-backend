@@ -1,8 +1,8 @@
 import { IotData, IotDataType } from "./IotData";
 import { EventType } from "./IotDataEvent";
 
-const HUMIDITY_THRESHOLD: number = 80;
-const WATER_LEVEL_THRESHOLD: number = 0.1;
+const HUMIDITY_THRESHOLD: number = 75;
+const WATER_LEVEL_THRESHOLD: number = 1;
 const TEMPERATURE_THRESHOLD: number = 50;
 
 export class WaterLeakDetectionData extends IotData {

@@ -47,7 +47,7 @@ describe( "Events service logic", () => {
 		const now = Date.now() + 1;
 		const temperature = 55.1;
 		const humidity = 99.8;
-		const waterLevel = 0.3;
+		const waterLevel = 3;
 		const heatIndex = 29.89;
 
 		const waterLeakDetection = new WaterLeakDetectionData( {ts: now, type: "waterLeakDetection", temperature, waterLevel, humidity, heatIndex} );

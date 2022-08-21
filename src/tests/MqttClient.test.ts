@@ -13,9 +13,9 @@ let mqttSrv: any;
 const waterLeakData = new WaterLeakDetectionData( {
 	ts: Date.now(),
 	waterLevel: 0,
-	temperature: 23.1,
-	humidity: 44.1,
-	heatIndex: 19.9
+	temperature: 23,
+	humidity: 44,
+	heatIndex: 20
 } );
 
 beforeAll( async () => {
@@ -31,7 +31,7 @@ beforeAll( async () => {
 				console.log( "client connected" );
 				client.publish( {
 					topic: "water_leak/detection",
-					payload: JSON.stringify( waterLeakData )
+					payload: JSON.stringify( { ...waterLeakData, ts: waterLeakData.ts / 1000 } )
 				} );
 			} );
 		} );
